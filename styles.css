@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Yaldevi:wght@200;300;400;500;600;700&display=swap');
+
+body{
+    max-width: 100%;
+    position: relative;
+}
+
+body::before{
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url(https://wallpaperaccess.com/full/177892.jpg);
+    background-size: cover;
+    background-position: top center;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+h1 {
+    font-family: 'Playfair Display SC', serif;
+}
+
+p, li {
+    font-family: 'Yaldevi', sans-serif;    
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: grey;
+}
+
+li{
+    background-color: cornsilk;
+    border: 1px solid darkcyan;
+    max-width: 18%;
+    border-radius: .5em;
+    margin: .5em;
+    padding-left: 1em;
+}
