@@ -19,7 +19,7 @@ body::before{
     z-index: -1;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6{
     font-family: 'Playfair Display SC', serif;
 }
 
@@ -43,4 +43,16 @@ li{
     border-radius: .5em;
     margin: .5em;
     padding-left: 1em;
+}
+
+header{
+    background-color: coral;
+    border-radius: .2em;
+    text-align: center;
+    padding: .1em;
+}
+
+.thh1, .thh3{
+    color: cornsilk;
+    text-shadow: 1px 1px 2px black, 0 0 1em brown, 0 0 0.2em black;
 }
