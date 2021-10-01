@@ -70,3 +70,15 @@ header{
     color: crimson;
     margin-bottom: .2em;
 }
+
+.line{
+    background-color: chocolate;
+    width: 20%;
+    height: .2em;
+    margin-top: -1em;
+    border-radius: 10em;
+}
+
+.fa-external-link-square-alt{
+    color: cornflowerblue;
+}
