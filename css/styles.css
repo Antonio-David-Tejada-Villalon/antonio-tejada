@@ -82,3 +82,40 @@ header{
 .fa-external-link-square-alt{
     color: cornflowerblue;
 }
+
+#container{
+    display: grid;
+    grid-template: repeat(3, 5em)/ repeat(3, 5em);
+    margin-top: 1em;
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid darkred;
+}
+
+/*Styling the tic tac toe with my team*/
+
+table {
+    border-collapse: collapse;
+  }
+  td {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    height: 200px;
+    width: 200px;
+  }
+  td:last-child {
+    border-right: none;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  td {
+    text-align: center;
+    font-size: 4em;
+  }
