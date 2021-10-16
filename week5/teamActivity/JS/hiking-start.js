@@ -59,16 +59,18 @@ class Hikes {
     const item = document.createElement("li");
 
     item.innerHTML = ` <h2>${hike.name}</h2>
+          <div class="subzero">
           <div class="image"><img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
-          <div>
-                  <div>
+          <div class="zero">
+                  <div class="first">
                       <h3>Distance</h3>
                       <p>${hike.distance}</p>
                   </div>
-                  <div>
+                  <div class="second">
                       <h3>Difficulty</h3>
                       <p>${hike.difficulty}</p>
                   </div>
+          </div>
           </div>`;
     item.addEventListener("click", () => this.renderHikeDetails(hike))
     return item;
@@ -79,24 +81,27 @@ class Hikes {
     const item = document.createElement("li");
 
     item.innerHTML = ` <h2>${hike.name}</h2>
+           <div class="subzero">
           <div class="image"><img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
-          <div>
-                  <div>
+          <div class="zero">
+                  <div class="first">
                       <h3>Distance</h3>
                       <p>${hike.distance}</p>
                   </div>
                   
-                  <div>
+                  <div class="second">
                       <h3>Difficulty</h3>
                       <p>${hike.difficulty}</p>
                   </div>
-                  <div>
+                  <div class="third">
                   <h3>Description</h3>
                   <p>${hike.description}</p>
-              </div>  <div>
+              </div>  
+              <div class="fourth">
                 <h3>Directions</h3>
                 <p>${hike.directions}</p>
               </div>
+          </div>
           </div>`;
     this.container.appendChild(this.addBackButton());
 
