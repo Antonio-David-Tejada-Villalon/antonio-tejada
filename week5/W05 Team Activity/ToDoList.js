@@ -3,10 +3,10 @@
 const formUI = document.querySelector('#forms');
 const ActivityListUI = document.getElementById('ActivityList');
 
-let arrayActivities = [];
+let arrayActivities = []; //For saving activities
 
 //Functions
-//Creating the array
+//Creating items into the arrayActivities
 const CreateItem = (activity) => {
     let item = {
         activity: activity,
@@ -14,7 +14,7 @@ const CreateItem = (activity) => {
     }
     //Adding items to array
     arrayActivities.push(item);
-    return item;
+    return item; //Returning the new item
 };
 
 //Saving item in Local Storage
@@ -33,13 +33,33 @@ const ReadDB = () => {
         arrayActivities = [];
     }else{
         arrayActivities.forEach(element => {
-            ActivityListUI.innerHTML += `<div class="alert alert-danger" role="alert"> <i class="fas fa-universal-access fa-sm"></i> <b>${element.activity}</b> - ${element.status} <span class="float-end"><i class="fas fa-check"></i> <i class="fas fa-trash-alt"></i></span></div>`
+            if(element.status){
+                ActivityListUI.innerHTML += `<div class="alert alert-success" role="alert"><i class="material-icons float-start me-2">accessibility</i> <b>${element.activity}</b> - ${element.status} <span class="float-end"><i class="material-icons">done</i><i class="material-icons">delete</i></span></div>`
+            }else{
+                ActivityListUI.innerHTML += `<div class="alert alert-danger" role="alert"><i class="material-icons float-start me-2">accessibility</i> <b>${element.activity}</b> - ${element.status} <span class="float-end"><i class="material-icons">done</i><i class="material-icons">delete</i></span></div>`
+            }
         })
     }
 }
 
 const DeleteDB = (activity) => {
-    console.log(activity);
+    let indexArray
+    arrayActivities.forEach((element, index)=>{
+        if(element.activity === activity){
+            indexArray = index;
+        }
+    })
+
+    arrayActivities.splice(indexArray, 1);
+    SaveDB();
+}
+
+const EditDB = (activity) => {
+    let indexArray = arrayActivities.findIndex((element)=>element.activity === activity);
+    console.log(arrayActivities[indexArray]);
+    arrayActivities[indexArray].status = true;
+
+    SaveDB();
 }
 
 //EventListener
@@ -57,18 +77,16 @@ document.addEventListener('DOMContentLoaded', ReadDB); //fires when the initial 
 
 ActivityListUI.addEventListener('click', (e) =>{
     e.preventDefault();
-    console.log(e);
-    console.log(e.path[0].childNodes[0].data);
-    console.log(e.path[0].classList.value);
         
-        if (e.path[0].classList[1] === 'fas fa-check' || e.path[0].classList[1] === 'fas fa-trash-alt'){
-            let text = e.path[0].innerHTML;
-
-            if(e.path[0].classList[1] === 'fas fa-trash-alt'){
-                console,log(text);
-                //Delete action
+        if (e.target.innerHTML === 'done' || e.target.innerHTML === 'delete'){
+            let text = e.path[2].childNodes[2].innerHTML;
+            if(e.target.innerHTML === 'delete'){
+                //Delete Action
                 DeleteDB(text);
             }
-            if(e.path[0].classList[1] === 'fas fa-check'){}
+            if(e.target.innerHTML === 'done'){
+                //Done Action
+                EditDB(text);
+            }
         }
     })
