@@ -100,11 +100,11 @@ class Hikes {
               <div class="fourth">
                 <h3>Directions</h3>
                 <p>${hike.directions}</p>
-              </div>
+              </div><br>
           </div>
           <div class="space">
-          <textarea id="hikecomments"></textarea>
-          <button id="addComment">Add Comment</button>
+          <textarea id="hikecomments"></textarea><br>
+          <button id="addComment">Add Comment</button><br>
           </div>
           </div>`;
     this.container.appendChild(this.addBackButton());
