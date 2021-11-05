@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <style>
+      button{
+        margin-left: .5em;
+      }
+      .btn-dark{
+        color: black;
+      }
+    </style>
+    <title>Team</title>
+  </head>
+  <body>
+    <h1>Week 8 Team Activity</h1>
+    <div id="container"></div>
+    <script>
+      const BASE_URL = 'https://swapi.dev/api';
+
+      async function init() {
+        await renderPeople(`${BASE_URL}/people/`);
+      }
+
+      async function renderPeople(url) {
+        document.getElementById('container').innerHTML = '';
+        const people = await getResource(url);
+        const peopleTable = createTable(people, [
+          { key: 'name', headerLabel: 'Name' },
+          { key: 'birth_year', headerLabel: 'Birth Year' },
+          {
+            key: 'mass',
+            headerLabel: 'Mass (kg)',
+            cellRenderer: (mass) => `${mass} kg`,
+          },
+          {
+            key: 'homeworld',
+            headerLabel: 'Home World',
+            cellRenderer: async (worldUrl) => {
+              // TODO fetch world and get name
+              const response = await fetch(worldUrl);
+              const world = await response.json();
+              return world.name;
+            },
+          },
+        ]);
+        document.getElementById('container').appendChild(peopleTable);
+      }
+
+      async function getResource(url) {
+        const response = await fetch(url);
+        const resource = await response.json();
+        return resource; // count, next, previous, results
+      }
+
+      function createTable(data, cellsToRender) {
+        // show results
+        const table = document.createElement('table');
+        table.setAttribute('class', 'table table-striped table-hover table-bordered border-info');
+        const thead = document.createElement('thead');
+        thead.setAttribute('class', 'table-dark')
+        const headerRow = document.createElement('tr');
+
+        cellsToRender.forEach((cell) => {
+          const th = document.createElement('th');
+          th.innerHTML = cell.headerLabel;
+          headerRow.appendChild(th);
+        });
+
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+
+        data.results.forEach((record) => {
+          const row = document.createElement('tr');
+          cellsToRender.forEach(async (cell) => {
+            const td = document.createElement('td');
+            td.innerHTML = cell.cellRenderer
+              ? await cell.cellRenderer(record[cell.key])
+              : record[cell.key];
+            row.appendChild(td);
+          });
+          tbody.appendChild(row);
+        });
+
+        table.appendChild(tbody);
+
+        // show prev and next buttons
+        const tfoot = document.createElement('tfoot');
+        const footerRow = document.createElement('tr');
+        footerRow.setAttribute('colspan', cellsToRender.length);
+
+        const previousBtn = document.createElement('button');
+        previousBtn.setAttribute('class', 'btn btn-dark');
+        previousBtn.innerHTML = 'Previous';
+        if (!data.previous) {
+          previousBtn.setAttribute('disabled', true);
+        }
+        previousBtn.addEventListener('click', () => {
+          renderPeople(data.previous);
+        });
+        footerRow.appendChild(previousBtn);
+
+        const nextBtn = document.createElement('button');
+        nextBtn.setAttribute('class', 'btn btn-dark');
+        nextBtn.innerHTML = 'Next';
+        if (!data.next) {
+          nextBtn.setAttribute('disabled', true);
+        }
+        nextBtn.addEventListener('click', () => {
+          renderPeople(data.next);
+        });
+        footerRow.appendChild(nextBtn);
+
+        tfoot.appendChild(footerRow);
+        table.appendChild(tfoot);
+
+        return table;
+      }
+
+      // total count / 10 = 6
+      // 1, 2, 3
+      // onClick = renderPeople(${BASE_URL}/people/?page=${i})
+
+      window.addEventListener('load', init);
+    </script>
+  </body>
+</html>

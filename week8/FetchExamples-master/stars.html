@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Nearby Stars and Galaxies</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/w3-theme-teal.css">
+</head>
+
+<body>
+
+<div class="w3-container w3-theme-l1">
+    <div id="menu" class="w3-bar"></div>
+</div>
+
+<div class="w3-container w3-theme w3-padding-16">
+    <button id='getStars'>Get Nearby Stars</button>
+    <button id='getGalaxies'>Get Nearby Galaxies</button>
+    <p>Make sure that CORS is enabled</p>
+    <div>
+        This will actually read the source of an HTML page!
+        <a href="" id="href">See the Original Source here</a>
+    </div>
+</div>
+
+<div class="w3-container w3-theme-l2">
+    <table class="w3-table-all w3-theme w3-hoverable sortable">
+        <thead id='thead'></thead>
+        <tbody id='stars'></tbody>
+    </table>
+</div>
+</body>
+
+<script src="js/stars.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/sortColumns.js"></script>
+<script>makeMeActive('Stars')</script>
+
+</html>
