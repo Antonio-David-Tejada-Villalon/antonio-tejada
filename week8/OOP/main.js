@@ -57,7 +57,7 @@ Animal.prototype.greet = function(){
 }
 
 const snoopy = new Animal("Snoopy", "Male"), lolaBunny = new Animal("Lola Bunny", "Female");
-console.log(snoopy);
+console.trace(snoopy);
 console.log(lolaBunny);
 
 snoopy.toSound();
