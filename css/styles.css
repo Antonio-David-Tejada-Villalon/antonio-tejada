@@ -119,3 +119,9 @@ table {
     text-align: center;
     font-size: 4em;
   }
+
+  /*Styling the Quake List's Divs*/
+
+  li.list-group-item div{
+      color: darkgreen;
+  }
