@@ -125,3 +125,11 @@ table {
   li.list-group-item div{
       color: darkgreen;
   }
+
+  .fa-satellite{
+      color: darkslategray;
+  }
+
+  .fa-exclamation-triangle{
+      color: darkorange;
+  }

@@ -5,7 +5,7 @@
       listElement.innerHTML = quakeList.features
       .map(quake => {
         return `
-        <li data-id="${quake.id}" class="list-group-item">${quake.properties.title} <div><i class="far fa-calendar-alt"></i> ${new Date(
+        <li data-id="${quake.id}" class="list-group-item"><i class="fas fa-exclamation-triangle"></i> ${quake.properties.title} <div><i class="far fa-calendar-alt"></i> ${new Date(
             quake.properties.time
           )}</div></li>
   `;
