@@ -1,6 +1,6 @@
 import { getLocation } from './utilities.js';
 import Quake from './Quake.js';
-import QuakesView from './QuakesView.js';
+import QuakesView from './quakesView.js';
 
 // Quake controller
 export default class QuakesController {
