@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/39c226479a.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/styles.css">
     <title>Homework Week 11</title>
 </head>
@@ -17,8 +18,136 @@
     </header>
     <a href="../week11/teamwork11/client/week11.html" target="_blank" rel="noopener noreferrer">Work Team <i class="fas fa-external-link-alt"></i></a><br>
     <hr>
-    <h3>Future Possible Experiments</h3>
+    <h3 class="thh3a">Future Possible Experiments</h3>
     <div class="line"></div>
+    <div>
+        <br>
+        <h1 class="text-center text-muted"><i class="fas fa-key"></i> JWT</h1>
+        <br>
+        <h4>JSON Web Token (JWT): an introduction</h4>
+        <div class="line"></div>
+        <br>
+        <p>For a long time, web cookies were the most common method for user authentication. Even now, 
+            this method works well for certain purposes. But sometimes <strong>more flexibility</strong> is required. That’s 
+            where JSON Web Token comes in. As a <strong>newer</strong>, <strong>more open standard</strong>, it’s being used increasingly by 
+            important websites and apps. Keep reading to find out what JWT is, how it works, and what it’s used for.</p>
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item"><a href="#001">What is JSON Web Token? <i class="fas fa-paperclip"></i></a></li>
+            <li class="list-group-item"><a href="#002">How is a JWT generated? <i class="fas fa-paperclip"></i></a></li>
+            <li class="list-group-item"><a href="#003">How do JSON Web Tokens work? <i class="fas fa-paperclip"></i></a></li>
+            <li class="list-group-item"><a href="#004">What are JWTs used for? <i class="fas fa-paperclip"></i></a></li>
+            <li class="list-group-item"><a href="#005">What does a JWT example look like? <i class="fas fa-paperclip"></i></a></li>
+        </ol>
+        <br>
+        <h4 id="001">What is JSON Web Token?</h4>
+        <div class="line"></div>
+        <br>
+        <p>A JSON Web Token (JWT) is an access token standardized according to <a href="https://datatracker.ietf.org/doc/html/rfc7519" target="_blank" rel="noopener noreferrer"><strong>RFC 7519</strong> <i class="fas fa-external-link-alt"></i></a>, which makes it possible for two parties to securely 
+            exchange data. It contains all <strong>important information</strong> about an entity, meaning that no database queries are necessary and the session 
+            doesn’t need to be saved on the server.</p>
+        <p>JWT is especially popular in authentication processes. Its short messages can be encrypted and securely convey who the sender is and 
+            whether they have the <strong>necessary access rights</strong>. Users themselves only come into indirect contact with the token, for example, when they 
+            enter usernames and passwords into a mask. The real communication takes places between the client and the server.</p>
+        <br>
+        <h4 id="002">How is a JWT generated?</h4>
+        <div class="line"></div>
+        <br>
+        <p>A signed JSON Web Token consists of three parts, each of which are encoded using Base64 and separated by a point.</p>
+        <pre>HEADER.PAYLOAD.SIGNATURE</pre>
+        <p>Let’s look at each of these three parts in more detail.</p>
+        <h5>Header</h5>
+        <br>
+        <p>The header usually contains <strong>two parts</strong> and provides important information about the token. It contains the type of the token and the signing/encryption 
+            algorithm being used. For example, a JWT header can look as follows:</p>
+        <pre>{ "alg": "HS256", "typ": "JWT" }</pre>
+        <p>It is always recommended to use JWT as the type, which refers to the IANA media type “application/jwt.” In the above example, 
+            HMAC-SHA256 is used as the signing algorithm. <strong>Other common methods for encryption</strong> include RSA with SHA-256 (“RW256”) and ECDSA 
+            with SHA-256 (“ES256”). You should always use some kind of encryption. However, if the data really isn’t sensitive, you can enter 
+            “none” under encryption. Possible values are standardized by JSON Web Encryption based on <a href="https://datatracker.ietf.org/doc/html/rfc7516" target="_blank" rel="noopener noreferrer"><strong>RFC 7516</strong> <i class="fas fa-external-link-alt"></i></a>.</p>
+        <p>In case of more complex signed or encrypted JWT, there’s the additional parameter “cty” for content type. It should also be filled with the value “JWT.” In all other cases, this parameter should be left out.</p>
+        <h5>Payload</h5>
+        <p>The payload field is where the information that will be transmitted to the app is located. In this part, there are defined standards that determine 
+            what and how certain data are transmitted. The information is presented as <strong>key/value pairs</strong>, and the keys are called “claims” in JWT. There are 
+            three different types of claims:</p>
+        <ul>
+            <li><strong>Registered claims</strong> are registered in the <a href="https://www.iana.org/assignments/jwt/jwt.xhtml" target="_blank" rel="noopener noreferrer"><strong>IANA JSON Web Token Claim Register</strong> <i class="fas fa-external-link-alt"></i></a>. Their purpose is defined in a standard, for example “iss” for the issuer of the token, “aud” for the audience, and “exp” for the expiration time of the token. In order to keep the length of tokens as short as possible, short names are used for claims.</li>
+            <li><strong>Public claims</strong> can be defined at will by the user. However, to avoid collisions in the semantics of the keys, the claims should be registered in the IANA JSON Web Token Claim Register or use collision-resistant names.</li>
+            <li><strong>Private claims</strong> are used for the customized sharing of information. While public claims contain information like names and email addresses, private claims are more unique. Typical information that’s encoded using private claims include user IDs or concrete department names. When naming private claims, it’s important to make sure that a collision with registered or public claims is avoided.</li>
+        </ul>
+        <p>All claims are optional, meaning that you don’t have to use every registered claim. In general, payloads can contain as many claims as you want, but it’s recommended to limit the information <strong>you include to what’s really necessary</strong>. The larger the JWT, the more 
+            resources it will require for encoding and decoding.</p>
+        <p>A payload could look as follows:</p>
+        <pre>{ "sub": "123", "name": "Alice", "exp": 30 }</pre>
+        <h5>Signature</h5>
+        <p>The signature of a JSON Web Token is created using the Base64 coding of the header and payload and the indicated signing algorithm. The structure is determined by the JSON Web Signature (JWS), which is standardized based on <a href="https://datatracker.ietf.org/doc/html/rfc7515" target="_blank" rel="noopener noreferrer"><strong>RFC 7515</strong> <i class="fas fa-external-link-alt"></i></a>. In order to ensure that the signature works, it’s necessary to use a secret key that is only known to the issuing app. The signature verifies that nothing was changed in the message along the way. In the case of a token that was signed with a private key, it also ensures that the sender is who they claim to be.</p>
+        <p>Depending on how sensitive the data is, there are various possibilities:</p>
+        <ul>
+            <li><strong>No security</strong>: As mentioned above, if the data is not at all sensitive, the value “none” can be given in the header for the type of encryption. In this case, no signature will be generated. The JSON Web Token will then only consist of header and payload. Without any security, the payload can be read in plain text after Base64 decoding, and there is no way to verify if the message is coming from the correct sender or if it was altered along the way.</li>
+            <li><strong>Signature (JWS)</strong>: Generally, it’s enough to check whether the data is coming from the correct sender and whether it was altered. This is where the JSON Web Signature comes in, which ensures that the message wasn’t changed along the way and that it’s coming from the right sender. In this case, the payload can also be read in plain text after Base64 decoding.</li>
+            <li><strong>Signature (JWS) and encryption (JWE)</strong>: It’s also possible to use JSON Web Encryption (JWE), in addition to JWS. JWE encrypts the content of the payload, which is then signed with JWS. In order to decrypt the content, a password or private key is required. The sender is then verified, the message is ensured to be confidential and authentic, and the payload can’t be read in plain text after Base64 decoding.</li>
+        </ul>
+        <p>Thanks to the encryption, you’ll be left with a seemingly random stream of characters:</p>
+        <pre>{ 7WK5T79u5mIzjIXXi2oI9Fglmgivv7RAJ7izyj9tUyQ }</pre>
+        <div class="alert alert-warning" role="alert">
+            <i class="fas fa-exclamation-circle"></i>
+            No matter which of the above-mentioned security options you use, you should also use <strong>SSL for communication</strong>, in order to protect the data.
+        </div>
+        <br>
+        <h4 id="003">How do JSON Web Tokens work?</h4>
+        <div class="line"></div>
+        <br>
+        <p>Let’s use the example of a user login to illustrate the workings of JSON Web Token. Before using a JWT, you’ll have to <strong>define a secret key (“secret”)</strong>. As soon as a user has successfully entered their login information, the JWT will be returned with the key and saved locally. This transfer should take place over HTTPS to ensure that the data is protected.</p>
+        <p>Whenever the user wants to access protected resources, for example an <a href="https://www.youtube.com/watch?v=GZvSYJDk-us" target="_blank" rel="noopener noreferrer"><strong>API</strong> <i class="fas fa-external-link-alt"></i></a>, or a protected path, the JWT will be sent as a parameter or authorization header from the user agent. The <strong>communication partner can decrypt the JSON Web Token</strong> and carry out the query after a successful evaluation.</p>
+        <div class="alert alert-warning" role="alert">
+            <i class="fas fa-exclamation-circle"></i>
+            Since you’re dealing with login data, you shouldn’t keep a token longer than you need to and shouldn’t store any sensitive data in your browser memory.
+        </div>
+        <br>
+        <h4 id="004">What are JWTs used for?</h4>
+        <div class="line"></div>
+        <br>
+        <p>Compared with traditional options for authentication and authorization with cookies, JWTs come with several advantages. This has led to their popularity in contexts like the following:</p>
+        <ol>
+            <li><strong> REST applications</strong>: ensure stateless protocols, since the information for the authentication is sent with the request.</li>
+            <li><strong> Cross-Origin Ressource Sharing</strong>: JWTs send information as a part of cross-origin resource sharing. This has a huge advantage over cookies, which generally cannot be sent as a part of this process.</li>
+            <li><strong>Use in various frameworks</strong>: JWT is standardized. If you’re using various frameworks, data related to authentication can be more easily shared.</li>
+        </ol>
+        <br>
+        <h4 id="005">What does a JWT example look like?</h4>
+        <div class="line"></div>
+        <br>
+        <p>Using a JWT example, let’s take a look at how the token turns out in the end. First, let’s take the header example from above:</p>
+        <pre>
+    {
+        "alg": "HS256",
+        "typ": "JWT"
+    }
+        </pre>
+<p>Next, an example of the payload could be as follows:</p>
+<pre>
+    {
+        "sub": "0123456789",
+        "name": "John Doe",
+        "admin": true
+    }
+</pre>
+<p>In order to get to the actual structure of a JWT (three parts separate by periods), the header and the payload need to be coded with Base64. For the header, this will look as follows:</p>
+<pre>
+    base64Header = base64Encode(header)
+    // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+</pre>
+<p>Now the signature has to be created. In the header, we indicated that HMAC-SHA256 should be used:</p>
+<pre>
+    signature = HS256(base64Header + '.' + base64Payload, 'secret')
+    // dyt0CoTl4WoVjAHI9Q_CwSKhl6d_9rhM3NrXuJttkao
+</pre>
+<p>Finally, these three parts have to be put together and separated by a period:</p>
+<pre>
+    Token = base64Header + '.' + base64Payload + '.' + signature
+    // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.dyt0CoTl4WoVjAHI9Q_CwSKhl6d_9rhM3NrXuJttkao
+</pre>
+<p>Most programming languages have a library for generating JSON Web Tokens, meaning that it’s no longer necessary to do it manually.</p>
+    </div>
     <script src="./main.js"></script>
 </body>
 </html>

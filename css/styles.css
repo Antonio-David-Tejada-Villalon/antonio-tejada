@@ -66,6 +66,11 @@ header{
     text-shadow: 1px 1px 2px black, 0 0 1em brown, 0 0 0.2em black;
 }
 
+.thh3a{
+  color: black;
+  font-size: 1.5em;
+}
+
 .fa-desktop{
     color: crimson;
     margin-bottom: .2em;
@@ -75,12 +80,33 @@ header{
     background-color: chocolate;
     width: 20%;
     height: .2em;
-    margin-top: -1em;
+    margin-top: -.5em;
     border-radius: 10em;
+}
+
+pre {
+  display: block;
+  color: #ddd;
+  background-color: black;
+  border: 1px solid #ddd;
+  border-radius: 1em;
+  padding: 20px;
+  width: 100%;
+  margin-right: 10em;
 }
 
 .fa-external-link-square-alt{
     color: cornflowerblue;
+}
+
+.fa-key:hover{
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(.5em) translateZ(0);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transition-duration: 2s;
+  transition-property: text-shadow;
+  text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.6);
 }
 
 #container{
