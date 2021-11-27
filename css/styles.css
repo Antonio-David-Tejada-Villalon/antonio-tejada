@@ -109,6 +109,30 @@ pre {
   text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.6);
 }
 
+#button-up{
+  width: 2.75em;
+  height: 2.75em;
+  background: #0d6efd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 50%;
+  font-size: 1em;
+  position: fixed;
+  bottom: 2.5em;
+  right: 2.5em;
+  cursor: pointer;
+  border: .3em solid transparent;
+  transition: all 300ms ease;
+  transform: scale(0);
+}
+
+#button-up:hover{
+  transform: scale(1.1);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
 #container{
     display: grid;
     grid-template: repeat(3, 5em)/ repeat(3, 5em);
