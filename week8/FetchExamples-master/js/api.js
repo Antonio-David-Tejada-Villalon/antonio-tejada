@@ -10,30 +10,30 @@ function showGoblobalResume() {
   //fetch API for global info
   fetch(urlApi_global)
   .then((response) => response.json())
-  .then((jsObject) =>{
+  .then((response) =>{
     //assigning values
-    cryptos.innerHTML = jsObject[0].coins_count;
-    activeMarkets.innerHTML = jsObject[0].active_markets;
-    marketCap.innerHTML = "$ " + jsObject[0].total_mcap.toFixed(2);
-    marketCapChange.innerHTML = jsObject[0].mcap_change + " %";
+    cryptos.innerHTML = response[0].coins_count;
+    activeMarkets.innerHTML = response[0].active_markets;
+    marketCap.innerHTML = "$ " + response[0].total_mcap.toFixed(2);
+    marketCapChange.innerHTML = response[0].mcap_change + " %";
     btcDominance.innerHTML = `
-      <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: ${jsObject[0].btc_d}%;" aria-valuenow="${jsObject[0].btc_d}" aria-valuemin="0" aria-valuemax="100">
-        <span class="font-weight-bold" style="color: #fff; font-size:1.1em">${jsObject[0].btc_d}%</span>
+      <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: ${response[0].btc_d}%;" aria-valuenow="${response[0].btc_d}" aria-valuemin="0" aria-valuemax="100">
+        <span class="font-weight-bold" style="color: #fff; font-size:1.1em">${response[0].btc_d}%</span>
       </div>
     `;
     ethDominance.innerHTML = `
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: ${jsObject[0].eth_d}%;" aria-valuenow="${jsObject[0].eth_d}" aria-valuemin="0" aria-valuemax="100">
-      <span  style="color: #fff;">${jsObject[0].eth_d}%</span>
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: ${response[0].eth_d}%;" aria-valuenow="${response[0].eth_d}" aria-valuemin="0" aria-valuemax="100">
+      <span  style="color: #fff;">${response[0].eth_d}%</span>
     </div>
   `;
-    avgPriceChange.innerHTML = jsObject[0].avg_change_percent + " %";
+    avgPriceChange.innerHTML = response[0].avg_change_percent + " %";
     //adding classes if percentages are positive or negative
-    if (parseFloat(jsObject[0].mcap_change) > 0) {
+    if (parseFloat(response[0].mcap_change) > 0) {
       marketCapChange.classList.add("badge-success");
     } else {
       marketCapChange.classList.add("badge-danger");
     }
-    if (parseFloat(jsObject[0].avg_change_percent) > 0) {
+    if (parseFloat(response[0].avg_change_percent) > 0) {
       avgPriceChange.classList.add("badge-success");
     } else {
       avgPriceChange.classList.add("badge-danger");
@@ -48,9 +48,9 @@ function showTop10Coins(){
 //fetch API for top10 info
 fetch(urlApi_topTen)
   .then((response) => response.json())
-  .then((jsObject) =>{
+  .then((response) =>{
     
-    for(let i = 0; i < jsObject.data.length ;i++){
+    for(let i = 0; i < response.data.length ;i++){
       //creating elements
       let card = document.createElement('div');
       let cardRow = document.createElement('div');
@@ -69,41 +69,41 @@ fetch(urlApi_topTen)
 
       //assigning values
       cardRow.setAttribute('class', 'row no-gutters');
-      rankCoin.textContent = jsObject.data[i].rank;
+      rankCoin.textContent = response.data[i].rank;
       rankCoin.setAttribute('class','text-muted font-weight-bolder ml-1');
       imageContainer.setAttribute('class', 'col-md-4');
-      imageCoin.setAttribute('src', 'https://www.coinlore.com/img/'+ jsObject.data[i].nameid + '.png');
-      imageCoin.setAttribute('alt', 'logo of '+ jsObject.data[i].nameid);
+      imageCoin.setAttribute('src', 'https://www.coinlore.com/img/'+ response.data[i].nameid + '.png');
+      imageCoin.setAttribute('alt', 'logo of '+ response.data[i].nameid);
       imageCoin.setAttribute('class', 'mx-auto d-block');
       imageCoin.setAttribute('style', 'width:100px;');
       cardBodyContainer.setAttribute('class', 'col-md-8');
       cardBodyContainer.setAttribute('class', 'card-body');
-      nameCoin.innerHTML = `<a href="#" class="font-weight-bolder">${jsObject.data[i].name}</a>`;
+      nameCoin.innerHTML = `<a href="#" class="font-weight-bolder">${response.data[i].name}</a>`;
       nameCoin.setAttribute('style', 'font-size:2em');
-      priceCoin.innerHTML = `<p>Actual Price: <span class="badge badge-primary">$ ${jsObject.data[i].price_usd}</span></p>`;
+      priceCoin.innerHTML = `<p>Actual Price: <span class="badge badge-primary">$ ${response.data[i].price_usd}</span></p>`;
       //adding classes if percentages are positive or negative
-      if (parseFloat(jsObject.data[i].percent_change_1h) >= 0.0) {
-        change_1h.innerHTML = `<p>1h: <span class="badge badge-success">${jsObject.data[i].percent_change_1h} %</span></p>`;
+      if (parseFloat(response.data[i].percent_change_1h) >= 0.0) {
+        change_1h.innerHTML = `<p>1h: <span class="badge badge-success">${response.data[i].percent_change_1h} %</span></p>`;
       } else {
-        change_1h.innerHTML = `<p>1h: <span class="badge badge-danger">${jsObject.data[i].percent_change_1h} %</span></p>`;
+        change_1h.innerHTML = `<p>1h: <span class="badge badge-danger">${response.data[i].percent_change_1h} %</span></p>`;
       }
-      if (parseFloat(jsObject.data[i].percent_change_24h) >= 0.0) {
-        change_24h.innerHTML = `<p>24h: <span class="badge badge-success">${jsObject.data[i].percent_change_24h} %</span></p>`;
+      if (parseFloat(response.data[i].percent_change_24h) >= 0.0) {
+        change_24h.innerHTML = `<p>24h: <span class="badge badge-success">${response.data[i].percent_change_24h} %</span></p>`;
       } else {
-        change_24h.innerHTML = `<p>24h: <span class="badge badge-danger">${jsObject.data[i].percent_change_24h} %</span></p>`;
+        change_24h.innerHTML = `<p>24h: <span class="badge badge-danger">${response.data[i].percent_change_24h} %</span></p>`;
       }
-      marketCapCoin.innerHTML = `<p>Market Cap: <span class="badge badge-primary">$ ${jsObject.data[i].market_cap_usd}</span></p>`;
-      readMoreLink.innerHTML = `<a href="#" class="btn btn-info" data-toggle="modal" data-target="#staticBackdrop-${jsObject.data[i].rank}">View more</a>`;
+      marketCapCoin.innerHTML = `<p>Market Cap: <span class="badge badge-primary">$ ${response.data[i].market_cap_usd}</span></p>`;
+      readMoreLink.innerHTML = `<a href="#" class="btn btn-info" data-toggle="modal" data-target="#staticBackdrop-${response.data[i].rank}">View more</a>`;
 
       //modal
       modal.innerHTML =
       `
-      <div class="modal fade" id="staticBackdrop-${jsObject.data[i].rank}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="staticBackdrop-${response.data[i].rank}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <img src="https://c1.coinlore.com/img/25x25/${jsObject.data[i].nameid}.png" alt="${jsObject.data[i].nameid}"  class="m-1">
-              <h5 class="modal-title" >${jsObject.data[i].name}</h5>
+              <img src="https://c1.coinlore.com/img/25x25/${response.data[i].nameid}.png" alt="${response.data[i].nameid}"  class="m-1">
+              <h5 class="modal-title" >${response.data[i].name}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -112,51 +112,51 @@ fetch(urlApi_topTen)
               <ul "list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Symbol:
-                  <span class="badge">${jsObject.data[i].symbol}</span>
+                  <span class="badge">${response.data[i].symbol}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Name:
-                  <span class="badge">${jsObject.data[i].name}</span>
+                  <span class="badge">${response.data[i].name}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Price in USD:
-                  <span class="badge">$ ${jsObject.data[i].price_usd}</span>
+                  <span class="badge">$ ${response.data[i].price_usd}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Change in 1H:
-                  <span class="badge">${jsObject.data[i].percent_change_1h} %</span>
+                  <span class="badge">${response.data[i].percent_change_1h} %</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Change in 24H:
-                  <span class="badge">${jsObject.data[i].percent_change_24h} %</span>
+                  <span class="badge">${response.data[i].percent_change_24h} %</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Change in 7D:
-                  <span class="badge">${jsObject.data[i].percent_change_7d} %</span>
+                  <span class="badge">${response.data[i].percent_change_7d} %</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Price in BTC:
-                  <span class="badge">${jsObject.data[i].price_btc} BTC</span>
+                  <span class="badge">${response.data[i].price_btc} BTC</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Market Cap:
-                  <span class="badge">$ ${jsObject.data[i].market_cap_usd}</span>
+                  <span class="badge">$ ${response.data[i].market_cap_usd}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Volume 24H:
-                  <span class="badge">$ ${jsObject.data[i].volume24.toFixed(2)}</span>
+                  <span class="badge">$ ${response.data[i].volume24.toFixed(2)}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Circulating Supply:
-                  <span class="badge">${jsObject.data[i].csupply}</span>
+                  <span class="badge">${response.data[i].csupply}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Total Supply:
-                  <span class="badge">${jsObject.data[i].tsupply}</span>
+                  <span class="badge">${response.data[i].tsupply}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
                   Max Supply:
-                  <span class="badge">${jsObject.data[i].msupply}</span>
+                  <span class="badge">${response.data[i].msupply}</span>
                 </li>
               </ul>
             </div>
