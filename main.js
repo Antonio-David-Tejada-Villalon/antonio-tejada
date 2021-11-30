@@ -54,6 +54,10 @@ url: "week13/index.html"
 {
 label: "Week14 notes",
 url: "week14/index.html"
+},
+{
+  label: "Project File",
+  url: "cryptocurrencies/index.html"
 }
 ]
 
