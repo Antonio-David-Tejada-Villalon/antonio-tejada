@@ -45,75 +45,36 @@ fetch(coinUrl, {
 		} else {
 		  tfourH.innerHTML = `<td><span class="badge text-danger">${response.data[i].percent_change_24h}%</td>`;
 		}
-		link.innerHTML =  `<td><a class="btn btn-info btn-sm" data-toggle="modal" data-target="#staticBackdrop-${response.data[i].rank}">More</a></td>`;
+		link.innerHTML =  `<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal--${response.data[i].rank}">Info</button></td>`;
 	
 		//modal
 		modal.innerHTML =
-		`
-		<div class="modal fade" id="staticBackdrop-${response.data[i].rank}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		`<div class="modal fade" id="exampleModal--${response.data[i].rank}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 			<div class="modal-content">
-			  <div class="modal-header">
-				<img src="https://c1.coinlore.com/img/25x25/${response.data[i].nameid}.png" alt="${response.data[i].nameid}"  class="m-1">
-				<h5 class="modal-title" id="staticBackdropLabel">${response.data[i].name}</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
-				</button>
+			  <div class="modal-header d-flex justify-content-between">
+			  <img src="https://c1.coinlore.com/img/25x25/${response.data[i].nameid}.png" class="rounded float-start" alt="${response.data[i].nameid}">
+				<h5 class="modal-title" id="exampleModalLabel">${response.data[i].name}</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			  </div>
 			  <div class="modal-body">
-				<ul "list-group">
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Symbol:
-					<span class="badge">${response.data[i].symbol}</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Name:
-					<span class="badge">${response.data[i].name}</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Price in USD:
-					<span class="badge">$ ${response.data[i].price_usd}</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Change in 1H:
-					<span class="badge">${response.data[i].percent_change_1h} %</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Change in 24H:
-					<span class="badge">${response.data[i].percent_change_24h} %</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Change in 7D:
-					<span class="badge">${response.data[i].percent_change_7d} %</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Price in BTC:
-					<span class="badge">${response.data[i].price_btc} BTC</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Market Cap:
-					<span class="badge">$ ${response.data[i].market_cap_usd}</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Volume 24H:
-					<span class="badge">$ ${response.data[i].volume24.toFixed(2)}</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Circulating Supply:
-					<span class="badge">${response.data[i].csupply}</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Total Supply:
-					<span class="badge">${response.data[i].tsupply}</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-info">
-					Max Supply:
-					<span class="badge">${response.data[i].msupply}</span>
-				  </li>
-				</ul>
+			  <ul class="list-group">
+			  <li class="list-group-item d-flex justify-content-between">Symbol: <span class="badge bg-primary">${response.data[i].symbol}</span></li>
+			  <li class="list-group-item list-group-item-primary d-flex justify-content-between">Name: <span class="badge bg-primary">${response.data[i].name}</span></li>
+			  <li class="list-group-item list-group-item-secondary d-flex justify-content-between">Price in USD: <span class="badge bg-secondary">$ ${response.data[i].price_usd}</li>
+			  <li class="list-group-item list-group-item-success d-flex justify-content-between">Change in 1 hs: <span class="badge bg-success">${response.data[i].percent_change_1h} %</li>
+			  <li class="list-group-item list-group-item-danger d-flex justify-content-between">Change in 24 hs: <span class="badge bg-danger">${response.data[i].percent_change_24h} %</li>
+			  <li class="list-group-item list-group-item-warning d-flex justify-content-between">Change in 7 days: <span class="badge bg-warning">${response.data[i].percent_change_7d} %</li>
+			  <li class="list-group-item list-group-item-info d-flex justify-content-between">Price in BTC: <span class="badge bg-info">${response.data[i].price_btc} BTC</li>
+			  <li class="list-group-item list-group-item-light d-flex justify-content-between">Market Cap: <span class="badge bg-dark">$ ${response.data[i].market_cap_usd}</li>
+			  <li class="list-group-item list-group-item-dark d-flex justify-content-between">Volume in 24 hs: <span class="badge bg-dark">$ ${response.data[i].volume24.toFixed(2)}</li>
+			  <li class="list-group-item d-flex justify-content-between">Circulating Supply: <span class="badge bg-primary">$ ${response.data[i].csupply}</span></li>
+			  <li class="list-group-item list-group-item-primary d-flex justify-content-between">Total Supply: <span class="badge bg-primary">${response.data[i].tsupply}</span></li>
+			  <li class="list-group-item list-group-item-secondary d-flex justify-content-between">Max Supply: <span class="badge bg-secondary">${response.data[i].msupply}</li>
+			</ul>
 			  </div>
 			  <div class="modal-footer">
-			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 			  </div>
 			</div>
 		  </div>
@@ -141,10 +102,3 @@ fetch(coinUrl, {
 .catch(err => {
 	console.error(err);
 });
-
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
-
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
