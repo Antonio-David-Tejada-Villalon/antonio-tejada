@@ -1,4 +1,5 @@
 import {myApiKey, myApiHost} from './config.js';
+import searchFilter from './searchFilter.js';
 
 const coinUrl = "https://coinlore-cryptocurrency.p.rapidapi.com/api/tickers/?start=0&limit=100";
 
@@ -19,6 +20,7 @@ fetch(coinUrl, {
 
 		//creating elements
 		let tr = document.createElement('tr');
+		tr.setAttribute("class", "filtering");
 		let rank = document.createElement('th');
 		let icon = document.createElement('td');
 		let coin = document.createElement('td');
@@ -102,3 +104,5 @@ fetch(coinUrl, {
 .catch(err => {
 	console.error(err);
 });
+
+searchFilter(".filter", ".filtering");
