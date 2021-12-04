@@ -40,13 +40,19 @@
               <a class="nav-link disabled">Disabled</a>
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2 filter" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          <div class="d-flex">
+            <input class="form-control me-2 filter" id="form" type="search" placeholder="Search a Coin" aria-label="Search">
+            <button class="btn btn-outline-success" id="button">Search</button>
+          </div>
         </div>
       </div>
     </nav>
+    <!--Searching Coin List-->
+    <div class="d-flex justify-content-center">
+        <ul class="list-group" id="result">
+      </ul>
+    </div>
+    
 
     <!--main-->
     <main class="container container-fluid ms-5">
