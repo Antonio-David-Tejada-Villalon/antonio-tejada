@@ -5,8 +5,8 @@ export default function renderTable(data){
 
 		//creating elements
 		let tr = document.createElement('tr');
-		tr.setAttribute("class", "filtering");
 		let rank = document.createElement('th');
+		rank.setAttribute('id', data.data[i].rank);
 		let icon = document.createElement('td');
 		let coin = document.createElement('td');
 		let price = document.createElement('td');

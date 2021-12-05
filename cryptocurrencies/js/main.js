@@ -31,8 +31,7 @@ fetch(coinUrl, {
 		console.log(x);
 		let name = x.name.toLowerCase();
 		if(name.indexOf(text) !== -1){
-			result.innerHTML += `<li class="list-group-item d-flex justify-content-between"><img src="https://c1.coinlore.com/img/25x25/${x.nameid}.png" alt="${x.nameid}" style="width:30px;"> <span class="badge bg-primary">${x.name}</span></li>
-			<li class="list-group-item list-group-item-secondary d-flex justify-content-between">Price in USD: <span class="badge bg-secondary">$ ${x.price_usd}</li>`
+			result.innerHTML += `<a href="#${x.rank}" class="list-group-item d-flex justify-content-between align-items-start"><span class="badge bg-primary sc1"><img src="https://c1.coinlore.com/img/25x25/${x.nameid}.png" alt="${x.nameid}" style="width:30px;"></span> <span class="badge bg-primary sc1">${x.name}</span> Price in USD: <span class="badge bg-secondary sc1">$ ${x.price_usd}</a>`
 		}
 	}
 	if(result.innerHTML === ''){
@@ -46,4 +45,25 @@ button.addEventListener('click', tryToFilter)
 	console.error(err);
 });
 
-//searchFilter(".filter", ".filtering");
+//Scroll up
+
+document.getElementById('button-up').addEventListener("click", scrollUp);
+
+function scrollUp(){
+    let currentScroll = document.documentElement.scrollTop;
+    if(currentScroll > 0){
+        //window.requestAnimationFrame(scrollUp);
+        window.scrollTo (0, 0);
+    }
+}
+
+const buttonUp = document.getElementById('button-up');
+
+window.onscroll = function(){
+    let scroll = document.documentElement.scrollTop;
+    if(scroll > 100){
+        buttonUp.style.transform = "scale(1)"; 
+    }else if(scroll < 100){
+        buttonUp.style.transform = "scale(0)";
+    }
+}
