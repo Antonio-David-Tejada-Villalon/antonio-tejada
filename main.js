@@ -57,7 +57,7 @@ url: "week14/index.html"
 },
 {
   label: "Project File",
-  url: "cryptocurrencies/index.html"
+  url: "cryptocurrencies/howToUse.html"
 }
 ]
 

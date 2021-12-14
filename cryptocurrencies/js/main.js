@@ -5,8 +5,6 @@ const coinUrl = "https://coinlore-cryptocurrency.p.rapidapi.com/api/tickers/?sta
 
 const tbody = document.getElementById("tbody");
 
-window.data=[];
-
 fetch(coinUrl, {
 	"method": "GET",
 	"headers": {

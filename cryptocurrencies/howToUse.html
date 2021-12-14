@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Week 14 - Final Project</title>
+  </head>
+  <body>
+    <h1>Final Portfolio - Antonio David Tejada Villalon</h1>
+    <br>
+    <h3>Description of my Application:</h3>
+    <br>
+    <p>My app is simple and about cryptocurrencies, you can see information about the top 100 cryptocurrencies, or the most popular cryptocurrencies in the global market. In the first glimpse, you can see a nav bar with a search part in the right side and home in the left side, in the searching part you can type a possible combination of letters and after that, if you click on the search button, the app is going to find the cryptocurrencies with that kind of combinations of letters, if not you’re going to get “<i>The currency does not exist … Try again!</i></p>
+    <p>If you find a currency, you are going to see the image, name where you can see the combinations of letters and its price. Moreover, if you click on the image, the click is going to take you to the currency in the table of 100 currencies.</p>
+    <img class="img-fluid shadow-sm rounded" src="./image/nav-bar.png" alt="nav bar">
+    <h6 class="text-center">Navigation Bar</h6>
+    <br>
+    <div class="text-center">
+        <img id="c4" class="img-fluid shadow-sm rounded" src="./image/nav-bar-search-area.png" alt="navigation bar search area">
+    </div>
+    <h6 class="text-center">Search area (area to type a currency and search button)</h6>
+    <br>
+    <img id="c1" class="img-fluid shadow-sm rounded" src="./image/nav-bar-searching-usd.png" alt="searching good usd">
+    <h6 class="text-center">Making a good searching</h6>
+    <br>
+    <img id="c3" class="img-fluid shadow-sm rounded" src="./image/nav-bar-searching-xd.png" alt="searching bad xd">
+    <h6 class="text-center">Making a bad searching</h6>
+    <br>
+    <p>Below, you can see a table with 100 cryptocurrencies, with an order or number, next an image of that currency, name of that currency, its price nowaday, the volume in Market Capital, next you can see the profit as revenue or loss in one hour, after in 24 hours, and the last part there is a button in each currency where you can see more information</p>
+    <br>
+    <div class="text-center">
+        <img class="img-fluid shadow-sm rounded" src="./image/table.png" alt="table">
+    </div>
+    <h6 class="text-center">Cryptocurrencies Table</h6>
+    <br>
+    <p>If you click on the info button you are going to see more information in a pop up window, with the close button or X to close that window.</p>
+    <div class="text-center">
+        <img id="c2" class="img-fluid shadow-sm rounded" src="./image/table-click-on-info.png" alt="table Info">
+    </div>
+    <h6 class="text-center">Pop up adding information</h6>
+    <br>
+    <p>Moreover, if you scroll down in a few seconds you are going to see an up button, so if you click on it, you will go to the top of the page again. When you come back on the top of the page, the up button is going to disappear.</p>
+    <br>
+    <div class="text-center">
+        <img class="img-fluid shadow-sm rounded" src="./image/up-button.png" alt="up button">
+    </div>
+    <h6 class="text-center">Up Button</h6>
+    <br>
+    <p>In the last part, I added a favicon to my page.</p>
+    <br>
+    <div class="text-center">
+        <img class="img-fluid shadow-sm rounded" src="./image/favicon.png" alt="favicon">
+    </div>
+    <h6 class="text-center">Favicon (small image)</h6>
+    <br>
+    <h3>Colors</h3>
+    <p>I used black color because it’s more formal, that reduces the light on your screen, the color of currencies come by the JSON, even though that combines with every currency on the table. Also, the nav bar is black because of the same concept, just the search is white and the search button is green, and that changes its color when you click on it.</p>
+    <br>
+    <h3>Typefaces</h3>
+    <p>I wanted to convey classicism, formality, precision, tradition, delicacy or refinement. On the other hand, Sans Serif typefaces, as their name indicates -sans is French for without-, lack these details and are also known as dry sans serif typefaces.</p>
+    <br>
+    <h3>API</h3>
+    <p>I’m consuming this api <a href="https://rapidapi.com/coinlore/api/coinlore-cryptocurrency/" target="_blank" rel="noopener noreferrer">https://rapidapi.com/coinlore/api/coinlore-cryptocurrency/</a> , this has a big JSON with a lot of cryptocurrencies</p>
+    <br>
+    <h3>JavaScript (JS):</h3>
+    <p>I created three files: <a href="./js/main.js" target="_blank" rel="noopener noreferrer">main.js</a>, <a href="./js/config.js" target="_blank" rel="noopener noreferrer">config.js</a>, and <a href="./js/renderTable.js" target="_blank" rel="noopener noreferrer">renderTable.js</a>. Everything is executing in <a href="./js/main.js" target="_blank" rel="noopener noreferrer">main.js</a>, you could see the api key and api host as a constant in the <a href="./js/config.js" target="_blank" rel="noopener noreferrer">config.js</a>, and you could see a lot of code, where you can find the html with bootstrap in <a href="./js/renderTable.js" target="_blank" rel="noopener noreferrer">renderTable.js</a>. The search and button up code is in <a href="./js/main.js" target="_blank" rel="noopener noreferrer">main.js</a>, and some event listeners. </p>
+    <br>
+    <h3>How to use the app:</h3>
+    <p>As I said previously, <a href="#c1">you can search a cryptocurrency</a>, if you find it, click on it and that click is going to take you to the currency, you are going to see information about that currency, and if you want more information, <a href="#c2">you can click on the info button</a>, and you are going to get more information that cryptocurrency.</p>
+    <p><a href="#c3">If you made a mistake trying to find a currency</a>, you can type another currency or possibly combinations of letters, and click on <a href="#c4">the search button</a> again.</p>
+    <br>
+    <h3>A list of CSS features used:</h3>
+    <p>I used a little bit of CSS because my first challenge was to adapt and update the bootstrap in the JS file because mostly CSS comes from or it’s executed by JS. That was a big challenge because it’s my second time using bootstrap.</p>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"> <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer"> Framework Bootstrap</a></li>
+        <li class="list-group-item">CSS styling list and up button with transform and transition using a pseudo selector :hover</li>
+        <li class="list-group-item"></li>
+      </ul>
+    <br>
+    <h3>A description of my design process:</h3>
+    <p>Well, to be honest, I tried to follow the same visual concept in the project that I saw, and I made some modifications as I said previously, changing colors, fonts and adding new things like some search and up button with JS.
+    </p>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
