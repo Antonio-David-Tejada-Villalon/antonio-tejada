@@ -5,8 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+     <!--Favicon-->
+     <link rel="icon" type="image/x-icon" href="./image/favicon-manual.ico">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
 
     <title>Week 14 - Final Project</title>
   </head>
@@ -76,15 +80,94 @@
     <br>
     <h3>A list of CSS features used:</h3>
     <p>I used a little bit of CSS because my first challenge was to adapt and update the bootstrap in the JS file because mostly CSS comes from or it’s executed by JS. That was a big challenge because it’s my second time using bootstrap.</p>
-    <ul class="list-group list-group-flush">
+    <ol class="list-group list-group-numbered">
         <li class="list-group-item"> <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer"> Framework Bootstrap</a></li>
-        <li class="list-group-item">CSS styling list and up button with transform and transition using a pseudo selector :hover</li>
-        <li class="list-group-item"></li>
-      </ul>
+        <li class="list-group-item"> <a href="./styles.css" target="_blank" rel="noopener noreferrer">CSS</a> styling list and up button with transform and transition using a pseudo selector :hover</li>
+      </ol>
     <br>
     <h3>A description of my design process:</h3>
     <p>Well, to be honest, I tried to follow the same visual concept in the project that I saw, and I made some modifications as I said previously, changing colors, fonts with bootstrap and adding new things like some search and up button with JS.
     </p>
+    <br>
+    <h3>If I altered my app from the original concept:</h3>
+    <p>Well, I used this project as example: <a href="https://gtjames.github.io/FetchExamples/orig-allCoins.html" target="_blank" rel="noopener noreferrer">https://gtjames.github.io/FetchExamples/orig-allCoins.html</a>, so as I said, I had to update <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/" target="_blank" rel="noopener noreferrer">Bootstrap 4</a> to <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/" target="_blank" rel="noopener noreferrer">Bootstrap 5.x.x</a> in the <a href="./js/renderTable.js" target="_blank" rel="noopener noreferrer">JS file</a>, I added a search button, an up button and linked the searchings with every currency you could find in your search.</p>
+    <p>As i said, I had to alter because there is a new bootstrap, so I needed to change many parts in the code, so this way was going to work very well, after that I thought that is not enough and I added a way to search a currency instead to scroll down to every currency in the list or table.</p>
+    <p>Moreover, I added an up button because if you don’t want to scroll up to the top again, you can click on the up button.</p>
+    <br>
+    <h3>Solving some problems:</h3>
+    <p>I got some problems trying to coding the search function, because I could not pass the JSON data as an array until I fixed some variables were created in the wrong way, so I coded a filter function using indexOf(), so it is a method that returns the index within the calling string object of the first occurrence of the specified value, starting the search at fromIndex. Returns -1 if the value is not found. Getting the information from the input in the form and showing the results in the unordered list with id = “result”.</p>
+    <p>When I could show the currencies information, I added more styles in the JS file inside the function, giving results if you do a good search or not results, just trying again.</p>
+    <br>
+    <h3>Topics that I used of this course:</h3>
+    <ol class="list-group list-group-numbered">
+      <li class="list-group-item"> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" rel="noopener noreferrer"> Fetch API:</a> to consume an api from <a href="https://rapidapi.com/coinlore/api/coinlore-cryptocurrency/" target="_blank" rel="noopener noreferrer">rapidapi.com</a>
+      <pre>
+      <code>const coinUrl = "https://coinlore-cryptocurrency.p.rapidapi.com/api/tickers/?start=0&limit=100";
+
+        const tbody = document.getElementById("tbody");
+        
+        fetch(coinUrl, {
+          "method": "GET",
+          "headers": {
+            "x-rapidapi-host": myApiHost,
+            "x-rapidapi-key": myApiKey
+          }
+        })</code>
+    </pre></li>
+      <li class="list-group-item"> Modular: to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank" rel="noopener noreferrer">import{}</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export" target="_blank" rel="noopener noreferrer">export{}</a>.
+        <pre>
+          <code>import {myApiKey, myApiHost} from './config.js';
+            import renderTable from './renderTable.js';</code>
+        </pre>
+      <pre>
+        <code>const myApiKey = "2eeddbcba2mshd1d05cb3c9efbadp160c6djsn02689ce0015c";
+
+          const myApiHost = "coinlore-cryptocurrency.p.rapidapi.com";
+          
+          export {myApiKey,myApiHost};</code>
+      </pre>
+    <pre>
+      <code>export default function renderTable(data){ ... }</code>
+    </pre></li>
+    <li class="list-group-item"> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="noopener noreferrer">Arrow Function</a>: to reduce code and the parameters come before the arrow and the main body of the function comes after.
+      <pre>
+        <code>const tryToFilter = () => { ... }</code>
+      </pre>
+      <pre>
+        <code>.catch(err => { ... }</code>
+      </pre></li>
+      <li class="list-group-item"> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" target="_blank" rel="noopener noreferrer">Templates Literals</a>: using backtick `` to write html.
+        <pre>
+          <code>rank.innerHTML = `&lt;th scope="row"&gt;${data.data[i].rank}&lt;/th&gt;`;</code>
+        </pre></li>
+        <li class="list-group-item"> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of" target="_blank" rel="noopener noreferrer">For-of</a>: that represents the value of each element in the array.
+          <pre>
+            <code>for(let x of d.data){ ... }</code>
+          </pre></li>
+        <li class="list-group-item"> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf" target="_blank" rel="noopener noreferrer">indexOf</a>: is a method to find the first occurrence of a value in an array. If the item is in the array, it will return the index of the first occurrence of that item.
+          <pre>
+            <code>if(name.indexOf(text) !== -1){ ... }</code>
+          </pre></li>
+          <li class="list-group-item"> <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener noreferrer">addEventLsiteners</a>: method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.
+            <pre>
+              <code>button.addEventListener('click', tryToFilter)</code>
+              <code>...</code>
+              <code>document.getElementById('button-up').addEventListener("click", scrollUp);</code>
+            </pre>
+          </li>
+    </ol>
+
+    <!--Going to the Application-->
+    <div class="card">
+      <div class="card-header">
+        Cryptocurrencies Application by Antonio David Tejada Villalon | WDD330 | 2021
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Application based on Rapidapi.com</h5>
+        <p class="card-text">This is the Final Project.</p>
+        <a href="./index.html" target="_blank" class="btn btn-primary">Go to Application</a>
+      </div>
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
