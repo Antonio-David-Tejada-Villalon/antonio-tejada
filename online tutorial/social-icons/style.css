@@ -126,7 +126,7 @@ ul li:hover:nth-child(5) a:after{
 }
 
 /*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 200px) { 
+@media only screen and (max-width: 576px) { 
     ul{
         display: flex;
         justify-content: center;
