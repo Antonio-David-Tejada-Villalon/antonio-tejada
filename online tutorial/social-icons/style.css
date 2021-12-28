@@ -124,3 +124,18 @@ ul li:hover:nth-child(5) a:before{
 ul li:hover:nth-child(5) a:after{
     background: #eb847d;
 }
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 200px) { 
+    ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        top: 35em;
+    }
+
+    ul li{
+        margin: 1.5em;
+    }
+ }
