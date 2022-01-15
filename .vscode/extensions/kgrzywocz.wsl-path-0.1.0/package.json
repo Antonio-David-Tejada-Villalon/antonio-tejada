@@ -1,0 +1,65 @@
+{
+	"name": "wsl-path",
+	"displayName": "Linux/Unix/WSL paths",
+	"description": "Provides commands to have unix-like paths (with slashes instead of backslashes) in vscode scripts (like tasks.json).",
+	"version": "0.1.0",
+	"publisher": "kgrzywocz",
+	"author": {
+		"email": "kgrzywocz@wp.pl",
+		"name": "Krzysztof Grzywocz"
+	},
+	"engines": {
+		"vscode": "^1.32.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"WSL",
+		"linux path",
+		"unix path",
+		"wsl path"
+	],
+	"icon": "images/wsl-path-logo.png",
+	"homepage": "https://github.com/kgrzywocz/vscode-ext-wsl-path",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kgrzywocz/vscode-ext-wsl-path"
+	},
+	"bugs": {
+		"url": "https://github.com/kgrzywocz/vscode-ext-wsl-path/issues",
+		"email": "kgrzywocz@wp.pl"
+	},
+	"activationEvents": [
+		"onCommand:wsl-path.getRelativePath"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "wsl-path.getRelativePath",
+				"title": "Linux/Unix/WSL paths for Windows: Get Relative Path"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	},
+	"__metadata": {
+		"id": "1994c0c8-c2ab-4ce1-b349-950d354a2fb2",
+		"publisherId": "52869710-b8e0-443f-91ae-79a67d0add56",
+		"publisherDisplayName": "Krzysztof Grzywocz",
+		"installedTimestamp": 1631934851668
+	}
+}
